@@ -121,7 +121,7 @@
             <div
                 class="bg-white rounded-xl shadow-md border border-slate-200 p-6 transition-all hover:shadow-lg ring-1 ring-transparent focus-within:ring-blue-500 relative">
                 <div class="flex items-center gap-3 mb-4">
-                    <div
+                    <div id="dev1Avatar"
                         class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold shadow-sm">
                         D1
                     </div>
@@ -147,7 +147,7 @@
             <div
                 class="bg-white rounded-xl shadow-md border border-slate-200 p-6 transition-all hover:shadow-lg ring-1 ring-transparent focus-within:ring-emerald-500 relative">
                 <div class="flex items-center gap-3 mb-4">
-                    <div
+                    <div id="dev2Avatar"
                         class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold shadow-sm">
                         D2
                     </div>
@@ -335,9 +335,17 @@
             const nameInput = document.getElementById(`dev${id}Name`);
             const indexInput = document.getElementById(`dev${id}Index`);
             const statusEl = document.getElementById(`dev${id}Status`);
+            const avatarEl = document.getElementById(`dev${id}Avatar`);
 
             if (document.activeElement !== nameInput) nameInput.value = data.name || '';
             if (document.activeElement !== indexInput) indexInput.value = data.index || '';
+
+            // Update Avatar with Initials
+            if (data.name) {
+                avatarEl.innerText = getInitials(data.name);
+            } else {
+                avatarEl.innerText = `D${id}`;
+            }
 
             if (data.index) {
                 statusEl.style.opacity = '1';
@@ -348,6 +356,15 @@
             } else {
                 statusEl.style.opacity = '0';
             }
+        }
+
+        function getInitials(name) {
+            if (!name) return "";
+            const parts = name.trim().split(/\s+/);
+            if (parts.length === 1) {
+                return parts[0].substring(0, 2).toUpperCase(); // First 2 chars if one word
+            }
+            return (parts[0][0] + parts[1][0]).toUpperCase(); // First char of first 2 words
         }
 
         // --- ACTIONS ---
