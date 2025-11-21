@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,33 +9,72 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+
         /* Loader */
-        .loader { border: 3px solid #f3f3f3; border-radius: 50%; border-top: 3px solid #3498db; width: 20px; height: 20px; -webkit-animation: spin 1s linear infinite; animation: spin 1s linear infinite; }
-        @-webkit-keyframes spin { 0% { -webkit-transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); } }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #3498db;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
+
 <body class="bg-slate-50 min-h-screen p-4 md:p-8 text-slate-800">
 
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
+
         <!-- LEFT COLUMN: The Main Page List -->
-        <div class="lg:col-span-2 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col min-h-[500px]">
+        <div
+            class="lg:col-span-2 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col min-h-[500px]">
             <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-white">
                 <div>
                     <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
                         Master Page List
-                        <span id="connectionStatus" class="text-xs font-normal px-2 py-1 rounded bg-yellow-100 text-yellow-700">Connecting...</span>
+                        <span id="connectionStatus"
+                            class="text-xs font-normal px-2 py-1 rounded bg-yellow-100 text-yellow-700">Connecting...</span>
                     </h2>
                     <p class="text-sm text-slate-500">Live multiplayer tracking</p>
                 </div>
-                <button onclick="addNewPage()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 shadow-sm">
+                <button onclick="addNewPage()"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 shadow-sm">
                     <i class="fas fa-plus"></i> Add Page
                 </button>
             </div>
-            
+
             <div class="overflow-x-auto flex-grow relative">
                 <table class="w-full text-left text-sm">
                     <thead class="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
@@ -52,7 +92,8 @@
                 </table>
 
                 <!-- Empty State / Loading -->
-                <div id="loadingState" class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 z-10">
+                <div id="loadingState"
+                    class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 z-10">
                     <div class="loader mr-2"></div> <span class="text-slate-500">Syncing...</span>
                 </div>
                 <div id="emptyState" class="hidden absolute inset-0 flex items-center justify-center text-slate-400">
@@ -63,7 +104,7 @@
 
         <!-- RIGHT COLUMN: Developer Controls -->
         <div class="lg:col-span-1 space-y-6">
-            
+
             <!-- Instructions -->
             <div class="bg-blue-50 border border-blue-100 rounded-xl p-5">
                 <h3 class="font-bold text-blue-800 mb-2 flex items-center gap-2">
@@ -77,192 +118,204 @@
             </div>
 
             <!-- Developer 1 -->
-            <div class="bg-white rounded-xl shadow-md border border-slate-200 p-6 transition-all hover:shadow-lg ring-1 ring-transparent focus-within:ring-blue-500 relative">
+            <div
+                class="bg-white rounded-xl shadow-md border border-slate-200 p-6 transition-all hover:shadow-lg ring-1 ring-transparent focus-within:ring-blue-500 relative">
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold shadow-sm">
+                    <div
+                        class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold shadow-sm">
                         D1
                     </div>
-                    <input type="text" id="dev1Name" placeholder="Developer 1" class="font-bold text-lg text-slate-800 placeholder-slate-400 border-b border-transparent hover:border-slate-200 focus:border-indigo-500 focus:outline-none w-full bg-transparent p-1 transition-colors" onchange="updateDevName(1, this.value)">
+                    <input type="text" id="dev1Name" placeholder="Developer 1"
+                        class="font-bold text-lg text-slate-800 placeholder-slate-400 border-b border-transparent hover:border-slate-200 focus:border-indigo-500 focus:outline-none w-full bg-transparent p-1 transition-colors"
+                        onchange="updateDevName(1, this.value)">
                 </div>
-                
-                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Working On (Index #)</label>
+
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Working On
+                    (Index #)</label>
                 <div class="relative">
-                    <input type="number" id="dev1Index" placeholder="..." 
+                    <input type="number" id="dev1Index" placeholder="..."
                         class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 font-mono text-lg focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors shadow-sm"
                         onchange="handleWorkChange(1, this.value)">
-                    <div id="dev1Status" class="absolute right-3 top-3 text-xs font-medium px-2 py-1 rounded bg-slate-200 text-slate-500 opacity-0 transition-opacity">
+                    <div id="dev1Status"
+                        class="absolute right-3 top-3 text-xs font-medium px-2 py-1 rounded bg-slate-200 text-slate-500 opacity-0 transition-opacity">
                         Active
                     </div>
                 </div>
             </div>
 
             <!-- Developer 2 -->
-            <div class="bg-white rounded-xl shadow-md border border-slate-200 p-6 transition-all hover:shadow-lg ring-1 ring-transparent focus-within:ring-emerald-500 relative">
+            <div
+                class="bg-white rounded-xl shadow-md border border-slate-200 p-6 transition-all hover:shadow-lg ring-1 ring-transparent focus-within:ring-emerald-500 relative">
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold shadow-sm">
+                    <div
+                        class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold shadow-sm">
                         D2
                     </div>
-                    <input type="text" id="dev2Name" placeholder="Developer 2" class="font-bold text-lg text-slate-800 placeholder-slate-400 border-b border-transparent hover:border-slate-200 focus:border-emerald-500 focus:outline-none w-full bg-transparent p-1 transition-colors" onchange="updateDevName(2, this.value)">
+                    <input type="text" id="dev2Name" placeholder="Developer 2"
+                        class="font-bold text-lg text-slate-800 placeholder-slate-400 border-b border-transparent hover:border-slate-200 focus:border-emerald-500 focus:outline-none w-full bg-transparent p-1 transition-colors"
+                        onchange="updateDevName(2, this.value)">
                 </div>
-                
-                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Working On (Index #)</label>
+
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Working On
+                    (Index #)</label>
                 <div class="relative">
-                    <input type="number" id="dev2Index" placeholder="..." 
+                    <input type="number" id="dev2Index" placeholder="..."
                         class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 font-mono text-lg focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors shadow-sm"
                         onchange="handleWorkChange(2, this.value)">
-                    <div id="dev2Status" class="absolute right-3 top-3 text-xs font-medium px-2 py-1 rounded bg-slate-200 text-slate-500 opacity-0 transition-opacity">
+                    <div id="dev2Status"
+                        class="absolute right-3 top-3 text-xs font-medium px-2 py-1 rounded bg-slate-200 text-slate-500 opacity-0 transition-opacity">
                         Active
                     </div>
                 </div>
             </div>
-            
-             <div class="text-center mt-4 text-xs text-slate-400">
+
+            <div class="text-center mt-4 text-xs text-slate-400">
                 <p>Powered by Firebase Firestore</p>
             </div>
 
         </div>
     </div>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getFirestore, collection, doc, setDoc, onSnapshot, updateDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, doc, setDoc, onSnapshot, updateDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-    // --- CONFIGURATION SECTION ---
-    // If you are hosting this on GitHub, replace the "undefined" checks with your actual config object.
-    
-    const firebaseConfig = (typeof __firebase_config !== 'undefined') 
-        ? JSON.parse(__firebase_config) 
-        : {
-            /* TO USE ON GITHUB:
-               1. Go to console.firebase.google.com
-               2. Create a project > Add Web App
-               3. Copy the config object and paste it here 
-            */
-            apiKey: "AIzaSyDLNwrkcLEq2YrokQufl6B-fh5iYjkIWEY",
-            authDomain: "start-up-progress-tracker.firebaseapp.com",
-            projectId: "start-up-progress-tracker",
-            storageBucket: "start-up-progress-tracker.firebasestorage.app",
-            messagingSenderId: "484755598028",
-            appId: "1:484755598028:web:95df16e16a2171929eb069",
-            measurementId: "G-4KCNQ0DR85"
-          };
+        // --- CONFIGURATION SECTION ---
+        // If you are hosting this on GitHub, replace the "undefined" checks with your actual config object.
 
-    const appId = (typeof __app_id !== 'undefined') ? __app_id : 'default-tracker';
-    // -----------------------------
+        const firebaseConfig = (typeof __firebase_config !== 'undefined')
+            ? JSON.parse(__firebase_config)
+            : {
+                /* TO USE ON GITHUB:
+                   1. Go to console.firebase.google.com
+                   2. Create a project > Add Web App
+                   3. Copy the config object and paste it here 
+                */
+                apiKey: "AIzaSyDLNwrkcLEq2YrokQufl6B-fh5iYjkIWEY",
+                authDomain: "start-up-progress-tracker.firebaseapp.com",
+                projectId: "start-up-progress-tracker",
+                storageBucket: "start-up-progress-tracker.firebasestorage.app",
+                messagingSenderId: "484755598028",
+                appId: "1:484755598028:web:95df16e16a2171929eb069",
+                measurementId: "G-4KCNQ0DR85"
+            };
 
-    let db, auth, user;
-    let pages = [];
-    let dev1Data = { name: "", index: "" };
-    let dev2Data = { name: "", index: "" };
+        const appId = (typeof __app_id !== 'undefined') ? __app_id : 'default-tracker';
+        // -----------------------------
 
-    // Init App
-    try {
-        const app = initializeApp(firebaseConfig);
-        db = getFirestore(app);
-        auth = getAuth(app);
-        
-        // Correct Auth Pattern: Use Custom Token if available, else Anonymous
-        const initAuth = async () => {
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
+        let db, auth, user;
+        let pages = [];
+        let dev1Data = { name: "", index: "" };
+        let dev2Data = { name: "", index: "" };
+
+        // Init App
+        try {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+
+            // Correct Auth Pattern: Use Custom Token if available, else Anonymous
+            const initAuth = async () => {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (error) {
+                    console.error("Auth failed", error);
+                    document.getElementById('connectionStatus').innerText = "Auth Error";
+                    document.getElementById('connectionStatus').className = "text-xs font-normal px-2 py-1 rounded bg-red-100 text-red-700";
                 }
-            } catch (error) {
-                console.error("Auth failed", error);
-                document.getElementById('connectionStatus').innerText = "Auth Error";
-                document.getElementById('connectionStatus').className = "text-xs font-normal px-2 py-1 rounded bg-red-100 text-red-700";
-            }
-        };
+            };
 
-        initAuth();
+            initAuth();
 
-        onAuthStateChanged(auth, (u) => {
-            if (u) {
-                user = u;
-                document.getElementById('connectionStatus').innerText = "Connected";
-                document.getElementById('connectionStatus').className = "text-xs font-normal px-2 py-1 rounded bg-green-100 text-green-700";
-                initListeners();
-            }
-        });
-    } catch (e) {
-        console.error("Firebase Init Error:", e);
-        document.getElementById('connectionStatus').innerText = "Config Error";
-    }
-
-    function initListeners() {
-        if (!user) return;
-
-        // Using Rule 1: /artifacts/{appId}/public/data/{collectionName}
-        const pagesRef = collection(db, 'artifacts', appId, 'public', 'data', 'tracker_pages');
-        const devsRef = collection(db, 'artifacts', appId, 'public', 'data', 'tracker_devs');
-
-        // Listen for Pages
-        onSnapshot(pagesRef, (snapshot) => {
-            document.getElementById('loadingState').classList.add('hidden');
-            pages = [];
-            snapshot.forEach(doc => {
-                pages.push(doc.data());
-            });
-            // Sort by ID in memory (Rule 2: No complex queries)
-            pages.sort((a, b) => a.id - b.id);
-            renderTable();
-        }, (error) => {
-            console.error("Pages sync error:", error);
-            // Retry logic or user feedback could go here
-        });
-
-        // Listen for Developers
-        onSnapshot(devsRef, (snapshot) => {
-            snapshot.forEach(doc => {
-                if (doc.id === 'dev1') {
-                    dev1Data = doc.data();
-                    updateDevUI(1, dev1Data);
-                }
-                if (doc.id === 'dev2') {
-                    dev2Data = doc.data();
-                    updateDevUI(2, dev2Data);
+            onAuthStateChanged(auth, (u) => {
+                if (u) {
+                    user = u;
+                    document.getElementById('connectionStatus').innerText = "Connected";
+                    document.getElementById('connectionStatus').className = "text-xs font-normal px-2 py-1 rounded bg-green-100 text-green-700";
+                    initListeners();
                 }
             });
-            renderTable(); // Re-render table to show greyed out rows
-        }, (error) => console.error("Devs sync error:", error));
-    }
-
-    // --- UI RENDERING ---
-
-    function renderTable() {
-        const tbody = document.getElementById('pageTableBody');
-        tbody.innerHTML = '';
-
-        const workingIds = [
-            parseInt(dev1Data?.index) || 0, 
-            parseInt(dev2Data?.index) || 0
-        ];
-
-        if (pages.length === 0) {
-            document.getElementById('emptyState').classList.remove('hidden');
-            return;
-        } else {
-            document.getElementById('emptyState').classList.add('hidden');
+        } catch (e) {
+            console.error("Firebase Init Error:", e);
+            document.getElementById('connectionStatus').innerText = "Config Error";
         }
 
-        pages.forEach(page => {
-            const tr = document.createElement('tr');
-            const isActive = workingIds.includes(page.id);
-            
-            if (isActive) {
-                tr.className = "bg-slate-100 text-slate-400 transition-colors duration-300";
+        function initListeners() {
+            if (!user) return;
+
+            // Simplified Paths for easier console management
+            const pagesRef = collection(db, 'tracker_pages');
+            const devsRef = collection(db, 'tracker_devs');
+
+            // Listen for Pages
+            onSnapshot(pagesRef, (snapshot) => {
+                document.getElementById('loadingState').classList.add('hidden');
+                pages = [];
+                snapshot.forEach(doc => {
+                    pages.push(doc.data());
+                });
+                // Sort by ID in memory (Rule 2: No complex queries)
+                pages.sort((a, b) => a.id - b.id);
+                renderTable();
+            }, (error) => {
+                console.error("Pages sync error:", error);
+                document.getElementById('loadingState').innerHTML = `<div class="text-red-500 text-center"><p>Connection Failed</p><p class="text-xs">${error.message}</p></div>`;
+            });
+
+            // Listen for Developers
+            onSnapshot(devsRef, (snapshot) => {
+                snapshot.forEach(doc => {
+                    if (doc.id === 'dev1') {
+                        dev1Data = doc.data();
+                        updateDevUI(1, dev1Data);
+                    }
+                    if (doc.id === 'dev2') {
+                        dev2Data = doc.data();
+                        updateDevUI(2, dev2Data);
+                    }
+                });
+                renderTable(); // Re-render table to show greyed out rows
+            }, (error) => console.error("Devs sync error:", error));
+        }
+
+        // --- UI RENDERING ---
+
+        function renderTable() {
+            const tbody = document.getElementById('pageTableBody');
+            tbody.innerHTML = '';
+
+            const workingIds = [
+                parseInt(dev1Data?.index) || 0,
+                parseInt(dev2Data?.index) || 0
+            ];
+
+            if (pages.length === 0) {
+                document.getElementById('emptyState').classList.remove('hidden');
+                return;
             } else {
-                tr.className = "bg-white hover:bg-slate-50 text-slate-700 transition-colors duration-300";
+                document.getElementById('emptyState').classList.add('hidden');
             }
 
-            let statusBadge = isActive 
-                ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-200 text-slate-600"><span class="w-1.5 h-1.5 bg-slate-500 rounded-full mr-1.5 animate-pulse"></span>BEING WORKED ON</span>` 
-                : `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Ready</span>`;
+            pages.forEach(page => {
+                const tr = document.createElement('tr');
+                const isActive = workingIds.includes(page.id);
 
-            tr.innerHTML = `
+                if (isActive) {
+                    tr.className = "bg-slate-100 text-slate-400 transition-colors duration-300";
+                } else {
+                    tr.className = "bg-white hover:bg-slate-50 text-slate-700 transition-colors duration-300";
+                }
+
+                let statusBadge = isActive
+                    ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-200 text-slate-600"><span class="w-1.5 h-1.5 bg-slate-500 rounded-full mr-1.5 animate-pulse"></span>BEING WORKED ON</span>`
+                    : `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Ready</span>`;
+
+                tr.innerHTML = `
                 <td class="p-4 font-mono font-bold text-slate-400">#${page.id}</td>
                 <td class="p-4 font-medium">${page.name}</td>
                 <td class="p-4">${statusBadge}</td>
@@ -273,98 +326,99 @@
                     </button>
                 </td>
             `;
-            tbody.appendChild(tr);
-        });
-    }
-
-    function updateDevUI(id, data) {
-        // Only update inputs if they are not currently focused to avoid typing interruption
-        const nameInput = document.getElementById(`dev${id}Name`);
-        const indexInput = document.getElementById(`dev${id}Index`);
-        const statusEl = document.getElementById(`dev${id}Status`);
-
-        if (document.activeElement !== nameInput) nameInput.value = data.name || '';
-        if (document.activeElement !== indexInput) indexInput.value = data.index || '';
-
-        if (data.index) {
-            statusEl.style.opacity = '1';
-            statusEl.innerText = "Active";
-            statusEl.className = id === 1 
-                ? "absolute right-3 top-3 text-xs font-medium px-2 py-1 rounded bg-indigo-100 text-indigo-700"
-                : "absolute right-3 top-3 text-xs font-medium px-2 py-1 rounded bg-emerald-100 text-emerald-700";
-        } else {
-            statusEl.style.opacity = '0';
-        }
-    }
-
-    // --- ACTIONS ---
-
-    window.addNewPage = async () => {
-        if (!user) return alert("Not connected to database.");
-        const name = prompt("Enter page name:");
-        if (!name) return;
-
-        // Find next ID
-        let newId = 1;
-        if (pages.length > 0) {
-            const ids = pages.map(p => p.id);
-            newId = Math.max(...ids) + 1;
+                tbody.appendChild(tr);
+            });
         }
 
-        const docId = `page_${newId}`;
-        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'tracker_pages', docId);
-        
-        await setDoc(docRef, {
-            id: newId,
-            name: name,
-            lastEdited: "New"
-        });
-    };
+        function updateDevUI(id, data) {
+            // Only update inputs if they are not currently focused to avoid typing interruption
+            const nameInput = document.getElementById(`dev${id}Name`);
+            const indexInput = document.getElementById(`dev${id}Index`);
+            const statusEl = document.getElementById(`dev${id}Status`);
 
-    window.deletePage = async (id) => {
-        if (!user) return;
-        if (confirm("Delete this page?")) {
-            const docId = `page_${id}`;
-            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'tracker_pages', docId);
-            await deleteDoc(docRef);
+            if (document.activeElement !== nameInput) nameInput.value = data.name || '';
+            if (document.activeElement !== indexInput) indexInput.value = data.index || '';
+
+            if (data.index) {
+                statusEl.style.opacity = '1';
+                statusEl.innerText = "Active";
+                statusEl.className = id === 1
+                    ? "absolute right-3 top-3 text-xs font-medium px-2 py-1 rounded bg-indigo-100 text-indigo-700"
+                    : "absolute right-3 top-3 text-xs font-medium px-2 py-1 rounded bg-emerald-100 text-emerald-700";
+            } else {
+                statusEl.style.opacity = '0';
+            }
         }
-    };
 
-    window.handleWorkChange = async (devId, val) => {
-        if (!user) return;
-        
-        const prevVal = devId === 1 ? dev1Data.index : dev2Data.index;
-        const newVal = val;
+        // --- ACTIONS ---
 
-        // 1. Update Developer State
-        const docId = `dev${devId}`;
-        const devRef = doc(db, 'artifacts', appId, 'public', 'data', 'tracker_devs', docId);
-        await setDoc(devRef, { index: newVal }, { merge: true });
+        window.addNewPage = async () => {
+            if (!user) return alert("Not connected to database.");
+            const name = prompt("Enter page name:");
+            if (!name) return;
 
-        // 2. Logic: If we stopped working (had a value, now empty), update that page's date
-        if (prevVal && !newVal) {
-             const pageId = parseInt(prevVal);
-             const pageItem = pages.find(p => p.id === pageId);
-             
-             if (pageItem) {
-                const today = new Date().toLocaleDateString('en-GB');
-                const pageDocId = `page_${pageId}`;
-                const pageRef = doc(db, 'artifacts', appId, 'public', 'data', 'tracker_pages', pageDocId);
-                
-                await updateDoc(pageRef, {
-                    lastEdited: today
-                });
-             }
+            // Find next ID
+            let newId = 1;
+            if (pages.length > 0) {
+                const ids = pages.map(p => p.id);
+                newId = Math.max(...ids) + 1;
+            }
+
+            const docId = `page_${newId}`;
+            const docRef = doc(db, 'tracker_pages', docId);
+
+            await setDoc(docRef, {
+                id: newId,
+                name: name,
+                lastEdited: "New"
+            });
+        };
+
+        window.deletePage = async (id) => {
+            if (!user) return;
+            if (confirm("Delete this page?")) {
+                const docId = `page_${id}`;
+                const docRef = doc(db, 'tracker_pages', docId);
+                await deleteDoc(docRef);
+            }
+        };
+
+        window.handleWorkChange = async (devId, val) => {
+            if (!user) return;
+
+            const prevVal = devId === 1 ? dev1Data.index : dev2Data.index;
+            const newVal = val;
+
+            // 1. Update Developer State
+            const docId = `dev${devId}`;
+            const devRef = doc(db, 'tracker_devs', docId);
+            await setDoc(devRef, { index: newVal }, { merge: true });
+
+            // 2. Logic: If we stopped working (had a value, now empty), update that page's date
+            if (prevVal && !newVal) {
+                const pageId = parseInt(prevVal);
+                const pageItem = pages.find(p => p.id === pageId);
+
+                if (pageItem) {
+                    const today = new Date().toLocaleDateString('en-GB');
+                    const pageDocId = `page_${pageId}`;
+                    const pageRef = doc(db, 'tracker_pages', pageDocId);
+
+                    await updateDoc(pageRef, {
+                        lastEdited: today
+                    });
+                }
+            }
+        };
+
+        window.updateDevName = async (devId, name) => {
+            if (!user) return;
+            const docId = `dev${devId}`;
+            const devRef = doc(db, 'tracker_devs', docId);
+            await setDoc(devRef, { name: name }, { merge: true });
         }
-    };
 
-    window.updateDevName = async (devId, name) => {
-        if (!user) return;
-        const docId = `dev${devId}`;
-        const devRef = doc(db, 'artifacts', appId, 'public', 'data', 'tracker_devs', docId);
-        await setDoc(devRef, { name: name }, { merge: true });
-    }
-
-</script>
+    </script>
 </body>
+
 </html>
